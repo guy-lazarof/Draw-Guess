@@ -8,7 +8,7 @@ import reset from './../assets/img/reset.png';
 import undo from './../assets/img/undo.jpg';
 
 export default function Canvas() {
-  const [canvasSize, setCanvasSize] = useState([450, 350]);
+  const [canvasSize, setCanvasSize] = useState([400, 350]);
   const [brushColor, setBrushColor] = useState('');
   const [brushSize, setBrushSize] = useState('');
   const canvasRef = useRef(null);
