@@ -28,9 +28,12 @@ header.app-header {
 }
 
 .app-logo {
-    width: 40px;
+    // height: 40px;
 
     .logo {
-        border-radius: 50px;
+        margin-left: 10px;
+        width: 40px;
+        height: 40px;
+        border-radius: 20px;
     }
 }

@@ -7,7 +7,7 @@ import colorPicker from './../assets/img/color.jpg';
 import reset from './../assets/img/reset.png';
 import undo from './../assets/img/undo.jpg';
 
-export default function Canvas() {
+export default function Canvas({ status = false }) {
   const [canvasSize, setCanvasSize] = useState([400, 350]);
   const [brushColor, setBrushColor] = useState('');
   const [brushSize, setBrushSize] = useState('');
@@ -86,7 +86,7 @@ export default function Canvas() {
         canvasHeight={canvasSize[0]}
         canvasWidth={canvasSize[1]}
         ref={canvasRef}
-        disabled={false}
+        disabled={status}
         backgroundColor={"rgb(236, 246, 244)"}
         gridColor={"rgb(236, 246, 244)"}
         onChange={handleChangeCanvas}

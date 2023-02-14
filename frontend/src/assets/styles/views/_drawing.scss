@@ -9,10 +9,17 @@
 
     .send-btn {
       width: 100px;
-      font-size: 1.6em;
-      height: 35px;
-      background-color: #03ffc3;
+      font-size: 1.5em;
       border-radius: 30px;
+      border: 1px solid black;
+      // background-color: rgb(236, 246, 244);
+      background-color: #03ffc3;
+
+      &:hover,
+      &:active {
+        transition: 0.15s;
+        box-shadow: 1px 1px 3px 2px rgb(200, 200, 200);
+      }
     }
 
     .score-counter {

@@ -34,7 +34,8 @@ export function Guessing() {
 
   return (
     <section className='guessing-view'>
-      <Canvas />
+      <p className='score-counter'>score:{score}</p>
+      <Canvas status={true} />
       <form onSubmit={(event) => { onGuessing(event) }}
         className='guessing-form'>
 
@@ -51,7 +52,6 @@ export function Guessing() {
 
         <button className='guess-btn'>guess</button>
       </form>
-      <p className='score-counter'>score:{score}</p>
     </section>
   )
 }

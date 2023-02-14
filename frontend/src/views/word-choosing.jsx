@@ -41,7 +41,8 @@ export function WordChoosing() {
 
   return (
     <section className='word-choosing-view'>
-      <p>It's your turn, please choose your word</p>
+      <p>It's your turn!</p>
+      <p> please choose a word...</p>
       <div className='choose-word'>
 
         <div className='easy level' onClick={() => { choosingWord(easyWord[0], 1) }}>

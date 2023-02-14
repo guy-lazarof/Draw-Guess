@@ -2,7 +2,7 @@
   &>p {
     text-align: center;
     font-size: 1.3em;
-    padding: 30px;
+    padding: 15px;
   }
 
   .choose-word {
@@ -20,14 +20,31 @@
     border-radius: 8px;
     width: 28%;
     padding: 15px;
+
+    p:first-child {
+      border-bottom: 1px solid black;
+    }
+
+    p:last-child {
+      font-size: 1.3em;
+    }
+
     cursor: pointer;
 
-    &:hover {
-      box-shadow: 1px 1px 3px 4px rgb(236, 234, 234);
+    &.easy:hover {
+      box-shadow: 1px 1px 3px 4px rgb(123, 251, 4);
+    }
+
+    &.medium:hover {
+      box-shadow: 1px 1px 3px 4px rgb(255, 180, 19);
+    }
+
+    &.hard:hover {
+      box-shadow: 1px 1px 3px 4px rgb(255, 1, 1);
     }
 
     .points {
-      font-size: 0.7em;
+      font-size: 0.8em;
       padding-bottom: 10px;
     }
   }
