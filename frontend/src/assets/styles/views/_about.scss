@@ -52,9 +52,7 @@
     font-family: 'Arial', sans-serif;
     line-height: 1.5;
   }
-
 }
-
 
 .social {
   display: flex;
@@ -64,14 +62,13 @@
   li {
     margin-right: 1em;
     margin-top: 1em;
-
   }
 
-  i {
-    background-color: #0077c9;
-    font-size: 2em;
-    color: #333;
-    transition: color 0.2s;
+  .github,
+  .linkdin {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
   }
 
   a:hover i {

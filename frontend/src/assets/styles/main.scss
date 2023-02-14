@@ -1,6 +1,5 @@
 // Setup
 @import "setup/variables";
-@import "setup/functions";
 @import "setup/mixins";
 @import "setup/typography";
 
@@ -10,7 +9,6 @@
 @import "basics/base";
 @import "basics/forms";
 
-
 // Views
 @import 'views/about';
 @import 'views/drawing';
@@ -18,6 +16,7 @@
 @import 'views/waiting';
 @import 'views/welcome';
 @import 'views/word-choosing';
+
 // Components
 @import 'cmps/app-header';
 @import 'cmps/app-footer';

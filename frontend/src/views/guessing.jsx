@@ -1,13 +1,17 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-// import { randomWords } from 'random-words';
+import Canvas from '../cmps/canvas';
+import { getActionChooseWord } from '../store/choose.word.action';
+import { getActionScore } from '../store/score.action';
 
 export function Guessing() {
-
   const choosenWord = useSelector(storeState => storeState.chooseWordModule.choosenWord)
-
+  const points = useSelector(storeState => storeState.chooseWordModule.points)
+  const score = useSelector(storeState => storeState.scoreModule.score)
   const [guessingWord, setGuessingWord] = useState('')
+  const navigate = useNavigate()
 
   function handleChange({ target }) {
     let { value, name: field, type } = target
@@ -19,6 +23,9 @@ export function Guessing() {
     ev.preventDefault()
     if (choosenWord.length !== 0 && guessingWord.guessing === choosenWord) {
       console.log(true);
+      navigate(`/word-choosing`)
+      getActionChooseWord('')
+      getActionScore(points)
     }
     else {
       console.log(false);
@@ -27,10 +34,11 @@ export function Guessing() {
 
   return (
     <section className='guessing-view'>
+      <Canvas />
       <form onSubmit={(event) => { onGuessing(event) }}
         className='guessing-form'>
+
         <label className='guessing-label'>
-          <p>Your guessing</p>
           <input type="text"
             name="guessing"
             id="guessing"
@@ -41,8 +49,9 @@ export function Guessing() {
           />
         </label>
 
-        <button>guess</button>
+        <button className='guess-btn'>guess</button>
       </form>
+      <p className='score-counter'>score:{score}</p>
     </section>
   )
 }

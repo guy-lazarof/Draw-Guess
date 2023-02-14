@@ -1,6 +1,6 @@
 import io from 'socket.io-client';
 
-import { userService } from './user.service';
+// import { userService } from './user.service';
 
 export const SOCKET_EVENT_ADD_MSG = 'chat-add-msg'
 export const SOCKET_EMIT_SEND_MSG = 'chat-send-msg'
@@ -27,8 +27,8 @@ function createSocketService() {
     setup() {
       socket = io(baseUrl)
       setTimeout(() => {
-        const user = userService.getLoggedinUser()
-        if (user) this.login(user._id)
+        // const user = userService.getLoggedinUser()
+        // if (user) this.login(user._id)
       }, 500)
     },
     on(eventName, cb) {
@@ -90,19 +90,9 @@ function createDummySocketService() {
       this.emit(SOCKET_EVENT_ADD_MSG, { from: 'Someone', txt: 'Aha it worked!' })
     },
     testUserUpdate() {
-      this.emit(SOCKET_EVENT_USER_UPDATED, { ...userService.getLoggedinUser(), score: 555 })
+      // this.emit(SOCKET_EVENT_USER_UPDATED, { ...userService.getLoggedinUser(), score: 555 })
     }
   }
   window.listenersMap = listenersMap;
   return socketService
 }
-
-
-// Basic Tests
-// function cb(x) {console.log('Socket Test - Expected Puk, Actual:', x)}
-// socketService.on('baba', cb)
-// socketService.on('baba', cb)
-// socketService.on('baba', cb)
-// socketService.on('mama', cb)
-// socketService.emit('baba', 'Puk')
-// socketService.off('baba', cb)

@@ -11,7 +11,6 @@ export function Welcome() {
     console.log(playerName.name);
   }, [playerName])
 
-
   const [newName, setNewName] = useState('')
   const [isPlayerName, setIsPlayerName] = useState(false)
   function handleChange({ target }) {
@@ -30,36 +29,33 @@ export function Welcome() {
   }
 
   return (
-
     <section className='welcome-view'>
       {!playerName &&
-        <>
+        <div className='player-name-div'>
           <h1>Welcome to Draw Together </h1>
           <form onSubmit={(event) => { onPlayerName(event) }}
             className='player-name-form'>
             <label className='player-name-label'>
-              <p>What's your name</p>
+              {/* <p>Enter your name</p> */}
               <input type="text"
                 name="name"
                 id="player-name"
-                placeholder="your name"
+                placeholder="Enter your name"
                 onChange={handleChange}
                 className='player-name-input'
               />
             </label>
-
-            <button>ok</button>
+            <button className='player-name-btn'>Add name</button>
           </form>
-        </>}
-
-
-      {/* {playerName &&
-        <Waiting />
-      } */}
-      {playerName &&
-        <h1>Welcome, {playerName.name}! </h1>
+        </div>
       }
 
+      {playerName &&
+        <div>
+          <h1>Welcome, {playerName.name}! </h1>
+          <Waiting />
+        </div>
+      }
     </section>
   )
 }

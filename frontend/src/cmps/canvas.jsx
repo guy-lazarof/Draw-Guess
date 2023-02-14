@@ -8,10 +8,9 @@ import reset from './../assets/img/reset.png';
 import undo from './../assets/img/undo.jpg';
 
 export default function Canvas() {
-  const [canvasSize, setCanvasSize] = useState([350, 350]);
+  const [canvasSize, setCanvasSize] = useState([450, 350]);
   const [brushColor, setBrushColor] = useState('');
   const [brushSize, setBrushSize] = useState('');
-
   const canvasRef = useRef(null);
 
   function handleChangeCanvas() {
@@ -26,7 +25,6 @@ export default function Canvas() {
     socket.on("drawing-from-server", (data) => {
       if (!data.payload) return;
       canvasRef.current.loadSaveData(data.payload);
-
     });
 
     return () => {
@@ -47,6 +45,7 @@ export default function Canvas() {
     setBrushSize((prevGuessing) => ({ ...prevGuessing, [field]: value }))
     console.log(brushSize)
   }
+
   function onUndo() {
     const canvas = canvasRef.current;
     canvas.undo()
@@ -60,8 +59,9 @@ export default function Canvas() {
   return (
     <section>
       <div className='canvas-editor'>
+
         <label className='brush-size-label'>
-          <p>brush size</p>
+          <p>brush size 📶</p>
           <input type={"range"} id="size" name="size"
             onChange={handleChangeSize} value={brushSize.size || 3} min="1" max="7" className='brush-size-input'>
           </input>
@@ -77,6 +77,7 @@ export default function Canvas() {
         <img src={undo} onClick={onUndo} className='undo btn' />
         <img src={reset} onClick={onReset} className='reset btn' />
       </div>
+
       <CanvasDraw
         className={"canvas"}
         lazyRadius={0}
@@ -90,6 +91,7 @@ export default function Canvas() {
         gridColor={"rgb(236, 246, 244)"}
         onChange={handleChangeCanvas}
       />
+
     </section>
   );
 }

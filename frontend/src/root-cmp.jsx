@@ -1,9 +1,11 @@
 import './assets/styles/main.scss';
 
+import { useEffect, useState } from 'react';
 import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { AppFooter } from './cmps/app-footer';
 import { AppHeader } from './cmps/app-header';
+import { socket } from './services/socket.service';
 import { About } from './views/about';
 import { Drawing } from './views/drawing';
 import { Guessing } from './views/guessing';
@@ -11,11 +13,29 @@ import { Waiting } from './views/waiting';
 import { Welcome } from './views/welcome';
 import { WordChoosing } from './views/word-choosing';
 
-
 export function RootCmp() {
+  const [isConnected, setIsConnected] = useState(socket.connected);
+
+  useEffect(() => {
+    socket.on('connect', () => {
+      setIsConnected(true);
+    });
+
+    socket.on('disconnect', () => {
+      setIsConnected(false);
+    });
+
+    return () => {
+      socket.off('connect');
+      socket.off('disconnect');
+      socket.off('drawing-from-server');
+    };
+  }, []);
+
   return (
     <div className="App">
       < Router >
+
         <section className="main-layout app">
           <AppHeader />
           <Routes>
@@ -28,6 +48,7 @@ export function RootCmp() {
           </Routes>
           <AppFooter />
         </section>
+
       </Router >
     </div>
   );

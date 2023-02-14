@@ -42,6 +42,7 @@ function generateRandomName() {
     'michel',
     'hinata',
   ]
+
   const famName = [
     'star',
     'kamikaza',
@@ -60,6 +61,7 @@ function generateRandomName() {
     'snow',
     'fire'
   ]
+
   return (
     names[Math.floor(Math.random() * names.length)] +
     famName[Math.floor(Math.random() * names.length)]
@@ -83,6 +85,7 @@ function timeAgo(ms = new Date()) {
     minutes: 60,
     seconds: 1,
   }
+
   const secondsElapsed = (date.getTime() - Date.now()) / 1000
   for (let key in ranges) {
     if (ranges[key] < Math.abs(secondsElapsed)) {
@@ -102,7 +105,6 @@ function randomPastTime() {
   const HOUR = 1000 * 60 * 60
   const DAY = 1000 * 60 * 60 * 24
   const WEEK = 1000 * 60 * 60 * 24 * 7
-
   const pastTime = getRandomIntInclusive(HOUR, WEEK)
   return Date.now() - pastTime
 }

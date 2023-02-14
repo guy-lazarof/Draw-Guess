@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.db4e7347.css",
+    "main.js": "/static/js/main.d661d249.js",
+    "static/media/lazarof.png": "/static/media/lazarof.9154355214dd4ebfa81a.png",
+    "static/media/fa-brands-400.ttf": "/static/media/fa-brands-400.450a5c898f0b184b968b.ttf",
+    "static/media/Sora-Light.ttf": "/static/media/Sora-Light.9df736b350fbe44a6ae4.ttf",
+    "static/media/Sora-SemiBold.ttf": "/static/media/Sora-SemiBold.b639463bbd3a7e7c31f2.ttf",
+    "static/media/Sora-Thin.ttf": "/static/media/Sora-Thin.0786ffd3ef6d6e10a5a5.ttf",
+    "static/media/Sora-Medium.ttf": "/static/media/Sora-Medium.c7d89ac9453bb39b7613.ttf",
+    "static/media/Sora-Bold.ttf": "/static/media/Sora-Bold.4473853965a9d49c11d9.ttf",
+    "static/media/Sora-Regular.ttf": "/static/media/Sora-Regular.59e8cd26fdf2c27c0ec7.ttf",
+    "index.html": "/index.html",
+    "main.db4e7347.css.map": "/static/css/main.db4e7347.css.map",
+    "main.d661d249.js.map": "/static/js/main.d661d249.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.db4e7347.css",
+    "static/js/main.d661d249.js"
+  ]
+}

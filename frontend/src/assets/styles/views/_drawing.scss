@@ -1,14 +1,42 @@
+.drawing-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  div {
+    display: flex;
+    gap: 20px;
+
+    .send-btn {
+      width: 100px;
+      font-size: 1.6em;
+      height: 35px;
+      background-color: #03ffc3;
+      border-radius: 30px;
+    }
+
+    .score-counter {
+      font-size: 1.6em;
+      // text-align: center;
+    }
+  }
+}
+
 .canvas-editor {
   display: flex;
   justify-content: center;
   gap: 20px;
-  padding-top: 10px;
+  margin-top: 10px;
+  padding: 5px;
+  border-radius: 10px;
+  border: 1px solid black;
 
   .brush-color-label {
     display: flex;
     flex-direction: column;
     // padding-bottom: 0px;
     height: 50px;
+    cursor: pointer;
 
     img {
       width: 50px;
@@ -18,11 +46,7 @@
     }
 
     .brush-color-input {
-      // width: 32px;
-      // height: 32px;
-      // border: none;
       visibility: hidden;
-
     }
   }
 
@@ -30,6 +54,7 @@
     width: 50px;
     height: 50px;
     border-radius: 50px;
+    cursor: pointer;
   }
 
   .brush-size-label {
@@ -37,6 +62,8 @@
     flex-direction: column;
     align-items: center;
 
-    .brush-size-input {}
+    .brush-size-input {
+      cursor: pointer;
+    }
   }
 }
