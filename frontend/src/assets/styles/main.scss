@@ -1,0 +1,24 @@
+// Setup
+@import "setup/variables";
+@import "setup/functions";
+@import "setup/mixins";
+@import "setup/typography";
+
+// Basics
+@import "basics/helpers";
+@import "basics/layout";
+@import "basics/base";
+@import "basics/forms";
+
+
+// Views
+@import 'views/about';
+@import 'views/drawing';
+@import 'views/guessing';
+@import 'views/waiting';
+@import 'views/welcome';
+@import 'views/word-choosing';
+// Components
+@import 'cmps/app-header';
+@import 'cmps/app-footer';
+@import 'cmps/canvas';

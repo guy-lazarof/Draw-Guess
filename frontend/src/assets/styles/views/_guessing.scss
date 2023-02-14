@@ -1,0 +1,17 @@
+.guessing-view {
+  .guessing-form {
+    padding-top: 20px;
+    display: flex;
+    // text-align: center;
+    justify-content: center;
+    gap: 10px;
+
+    .guessing-label {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      &>p {}
+    }
+  }
+}

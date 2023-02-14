@@ -1,0 +1,43 @@
+.word-choosing-view {
+  &>p {
+    text-align: center;
+    font-size: 1.3em;
+    padding: 30px;
+  }
+
+  .choose-word {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    // background-color: aqua;
+    // align-content: center;
+
+  }
+
+  .level {
+    // flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    border: 1px solid black;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 28%;
+    padding: 15px;
+
+    p {
+      // word-wrap: break-word;
+
+    }
+
+    &:hover {
+      box-shadow: 1px 1px 3px 4px rgb(236, 234, 234);
+    }
+
+    .points {
+      font-size: 0.7em;
+      padding-bottom: 10px;
+    }
+  }
+}
