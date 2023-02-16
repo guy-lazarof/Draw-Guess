@@ -34,7 +34,7 @@ function setupSocketAPI(http) {
         })
 
 
-        socket.on('start-game', (socketId) => {
+        socket.on('two-players', () => {
             // broadcast('word-choosing', '', socketId)
             // gIo.emit('word-choosing')
             socket.broadcast.emit('word-choosing')
@@ -57,6 +57,10 @@ function setupSocketAPI(http) {
 
         socket.on('word-choosing', () => {
             console.log('starting game')
+        })
+
+        socket.on('add-points', (points = 0) => {
+            socket.broadcast.emit('add-points-drawer', points)
         })
 
         socket.on('disconnect', socket => {

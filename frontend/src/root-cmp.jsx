@@ -24,10 +24,6 @@ export function RootCmp() {
   function connections() {
     socketService.emit('connections');
   }
-  function test() {
-    console.log('isConnected:', isConnected)
-    console.log('usersTest:', usersTest)
-  }
 
 
   return (
@@ -36,8 +32,6 @@ export function RootCmp() {
 
         <section className="main-layout app">
           <AppHeader />
-          <button onClick={test}>test</button>
-          <button onClick={connections}>connections</button>
           <Routes>
             <Route path="/" element={<Welcome />} />
             <Route path="/drawing" element={<Drawing />} />

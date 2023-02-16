@@ -8,7 +8,7 @@ import colorPicker from './../assets/img/color.jpg';
 import reset from './../assets/img/reset.png';
 import undo from './../assets/img/undo.jpg';
 
-export default function Canvas({ status = false, drawSent }) {
+export default function Canvas({ status = false }) {
   const [canvasSize, setCanvasSize] = useState([400, 350]);
   const [brushColor, setBrushColor] = useState('');
   const [brushSize, setBrushSize] = useState('');
@@ -26,10 +26,10 @@ export default function Canvas({ status = false, drawSent }) {
   }
 
   useEffect(() => {
-    if (drawSent) {
-      canvasRef.current.loadSaveData(drawSent);
+    if (draw) {
+      canvasRef.current.loadSaveData(draw);
     }
-  });
+  }, []);
 
   function handleChangeColor({ target }) {
     let { value, name: field, type } = target
