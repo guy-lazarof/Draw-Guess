@@ -15,16 +15,11 @@ import { WordChoosing } from './views/word-choosing';
 
 export function RootCmp() {
   const [isConnected, setIsConnected] = useState(socket.connected);
-
   const [usersTest, setUsersTest] = useState(0);
-  useEffect(() => {
-
-  }, []);
 
   function connections() {
     socketService.emit('connections');
   }
-
 
   return (
     <div className="App">
@@ -42,7 +37,6 @@ export function RootCmp() {
           </Routes>
           <AppFooter />
         </section>
-
       </Router >
     </div>
   );
