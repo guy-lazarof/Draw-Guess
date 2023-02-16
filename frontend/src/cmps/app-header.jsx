@@ -11,6 +11,10 @@ export function AppHeader() {
             </NavLink>
             <nav className='nav-bar'>
                 <NavLink to="/" className='navLink'>Welcome</NavLink> |
+                <NavLink to="/drawing" className='navLink'>Drawing</NavLink> |
+                <NavLink to="/guessing" className='navLink'>Guessing</NavLink> |
+                <NavLink to="/waiting" className='navLink'>Waiting</NavLink> |
+                <NavLink to="/word-choosing" className='navLink'>Word choosing</NavLink> |
                 <NavLink to="/about" className='navLink'>About</NavLink>
             </nav >
 

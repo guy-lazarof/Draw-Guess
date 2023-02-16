@@ -22,7 +22,6 @@ export default function Canvas({ status = false }) {
       canvasData = canvas.getSaveData();
     }
     getActionDraw(canvasData)
-    console.log('draw:', canvasData)
   }
 
   useEffect(() => {
@@ -35,14 +34,12 @@ export default function Canvas({ status = false }) {
     let { value, name: field, type } = target
     value = (type === 'range') ? +value : value
     setBrushColor((prevGuessing) => ({ ...prevGuessing, [field]: value }))
-    console.log(brushColor)
   }
 
   function handleChangeSize({ target }) {
     let { value, name: field, type } = target
     value = (type === 'range') ? +value : value
     setBrushSize((prevGuessing) => ({ ...prevGuessing, [field]: value }))
-    console.log(brushSize)
   }
 
   function onUndo() {

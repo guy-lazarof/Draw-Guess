@@ -22,23 +22,18 @@ export function Welcome() {
 
     socketService.on('first-navigation', (data) => {
       if (data === 'user1') {
-        console.log('data:', data)
         navigate(`/waiting`)
 
       }
       else if (data === 'user2') {
-        console.log('data:', data)
-
         socketService.emit('two-players');
         navigate(`/waiting`)
       }
     });
 
     return () => {
-      console.log('unloading component')
     }
   }, [])
-  console.log('socketId:', socketId)
 
   return (
     <section className='welcome-view'>

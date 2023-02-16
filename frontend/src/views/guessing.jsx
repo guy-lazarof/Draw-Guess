@@ -21,12 +21,6 @@ export function Guessing() {
   const navigate = useNavigate()
   const socketId = useSelector(storeState => storeState.socketIdModule.socketId)
 
-
-  useEffect(() => {
-    console.log('starting game')
-  }, [])
-
-
   // socketId
   function handleChange({ target }) {
     let { value, name: field, type } = target
@@ -36,18 +30,11 @@ export function Guessing() {
   function onGuessing(ev) {
     ev.preventDefault()
     if (choosenWord.length !== 0 && guessingWord.guessing === choosenWord) {
-      console.log(true);
-      // socketService.emit('guessing-success')
       getActionChooseWord('')
       getActionScore(points)
       getActionDraw('')
       socketService.emit('add-points', points)
       navigate(`/word-choosing`)
-
-
-    }
-    else {
-      console.log(false);
     }
   }
 

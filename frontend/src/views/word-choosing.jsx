@@ -7,12 +7,7 @@ import { getActionChooseWord } from '../store/choose.word.action';
 
 var randomWords = require('random-words');
 export function WordChoosing() {
-  const choosenWord = useSelector(storeState => storeState.chooseWordModule.choosenWord)
   const navigate = useNavigate()
-
-  useEffect(() => {
-    console.log(choosenWord);
-  }, [choosenWord])
 
   let easyWord = ''
   let mediumWord = ''
