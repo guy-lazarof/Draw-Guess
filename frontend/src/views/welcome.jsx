@@ -1,64 +1,51 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
-import { getActionPlayerName } from '../store/player.name.action';
+import { getActionSocketId } from '../store/socket.id.action';
+import { socketService } from './../services/socket.service.js';
 import { Waiting } from './waiting';
+import { WordChoosing } from './word-choosing';
 
 export function Welcome() {
-  const playerName = useSelector(storeState => storeState.playerNameModule.playerName)
+  const socketId = useSelector(storeState => storeState.socketIdModule.socketId)
 
+  const navigate = useNavigate()
   useEffect(() => {
-    console.log(playerName.name);
-  }, [playerName])
 
-  const [newName, setNewName] = useState('')
-  const [isPlayerName, setIsPlayerName] = useState(false)
-  function handleChange({ target }) {
-    let { value, name: field, type } = target
-    value = (type === 'range') ? +value : value
-    setNewName((prevGuessing) => ({ ...prevGuessing, [field]: value }))
-  }
+    socketService.emit('connections');
 
-  function onPlayerName(ev) {
-    ev.preventDefault()
-    if (newName.name.length >= 2) {
-      getActionPlayerName(newName)
-      setIsPlayerName(true)
-      console.log(playerName.name);
+    socketService.on('login', (data) => {
+      getActionSocketId(data)
+      socketService.emit('initialUsers', socketId);
+    });
+
+    socketService.on('first-navigation', (data) => {
+      if (data === 'user1') {
+        console.log('data:', data)
+        navigate(`/waiting`)
+
+      }
+      else if (data === 'user2') {
+        console.log('data:', data)
+        navigate(`/guessing`)
+      }
+    });
+
+    return () => {
+      console.log('unloading component')
     }
-  }
+  }, [])
+  console.log('socketId:', socketId)
 
   return (
     <section className='welcome-view'>
-      {!playerName &&
-        <div className='player-name-div'>
-          <h1>Welcome to Draw Together </h1>
-          <form onSubmit={(event) => { onPlayerName(event) }}
-            className='player-name-form'>
-            <label className='player-name-label'>
-              {/* <p>Enter your name</p> */}
-              <input type="text"
-                name="name"
-                id="player-name"
-                placeholder="Enter your name"
-                onChange={handleChange}
-                className='player-name-input'
-              />
-            </label>
-            <button className='player-name-btn'>Add name</button>
-          </form>
-        </div>
-      }
 
-      {playerName &&
-        <div>
-          <h1>Welcome, {playerName.name}! </h1>
-          <Waiting />
-        </div>
-      }
+      <div>
+        <h1>Welcome! </h1>
+        <Waiting />
+      </div>
+
     </section>
   )
 }
-
-
-

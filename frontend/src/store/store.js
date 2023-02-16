@@ -1,12 +1,12 @@
 import { combineReducers, createStore } from 'redux';
 
 import { chooseWordReducer } from './choose.word.reducer.js';
-import { playerNameReducer } from './player.name.reducer.js';
 import { scoreReducer } from './score.reducer.js';
+import { socketIdReducer } from './socket.id.reducer.js';
 
 const rootReducer = combineReducers({
     chooseWordModule: chooseWordReducer,
-    playerNameModule: playerNameReducer,
+    socketIdModule: socketIdReducer,
     scoreModule: scoreReducer,
 })
 

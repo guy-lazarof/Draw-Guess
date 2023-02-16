@@ -5,7 +5,7 @@ import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 
 import { AppFooter } from './cmps/app-footer';
 import { AppHeader } from './cmps/app-header';
-import { socket } from './services/socket.service';
+import { socket, socketService } from './services/socket.service.js';
 import { About } from './views/about';
 import { Drawing } from './views/drawing';
 import { Guessing } from './views/guessing';
@@ -16,21 +16,19 @@ import { WordChoosing } from './views/word-choosing';
 export function RootCmp() {
   const [isConnected, setIsConnected] = useState(socket.connected);
 
+  const [usersTest, setUsersTest] = useState(0);
   useEffect(() => {
-    socket.on('connect', () => {
-      setIsConnected(true);
-    });
 
-    socket.on('disconnect', () => {
-      setIsConnected(false);
-    });
-
-    return () => {
-      socket.off('connect');
-      socket.off('disconnect');
-      socket.off('drawing-from-server');
-    };
   }, []);
+
+  function connections() {
+    socketService.emit('connections');
+  }
+  function test() {
+    console.log('isConnected:', isConnected)
+    console.log('usersTest:', usersTest)
+  }
+
 
   return (
     <div className="App">
@@ -38,6 +36,8 @@ export function RootCmp() {
 
         <section className="main-layout app">
           <AppHeader />
+          <button onClick={test}>test</button>
+          <button onClick={connections}>connections</button>
           <Routes>
             <Route path="/" element={<Welcome />} />
             <Route path="/drawing" element={<Drawing />} />

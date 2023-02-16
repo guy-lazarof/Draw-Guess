@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import Canvas from '../cmps/canvas';
+import { socketService } from '../services/socket.service';
 import { getActionChooseWord } from '../store/choose.word.action';
 import { getActionScore } from '../store/score.action';
 
@@ -12,13 +13,19 @@ export function Guessing() {
   const score = useSelector(storeState => storeState.scoreModule.score)
   const [guessingWord, setGuessingWord] = useState('')
   const navigate = useNavigate()
+  const socketId = useSelector(storeState => storeState.socketIdModule.socketId)
 
+
+  useEffect(() => {
+    socketService.emit('start-game', socketId)
+    console.log('starting game')
+  }, [])
+  // socketId
   function handleChange({ target }) {
     let { value, name: field, type } = target
     value = (type === 'range') ? +value : value
     setGuessingWord((prevGuessing) => ({ ...prevGuessing, [field]: value }))
   }
-
   function onGuessing(ev) {
     ev.preventDefault()
     if (choosenWord.length !== 0 && guessingWord.guessing === choosenWord) {
@@ -38,7 +45,6 @@ export function Guessing() {
       <Canvas status={true} />
       <form onSubmit={(event) => { onGuessing(event) }}
         className='guessing-form'>
-
         <label className='guessing-label'>
           <input type="text"
             name="guessing"
@@ -49,7 +55,6 @@ export function Guessing() {
             maxLength={choosenWord.length}
           />
         </label>
-
         <button className='guess-btn'>guess</button>
       </form>
     </section>

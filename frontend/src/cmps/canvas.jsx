@@ -59,7 +59,6 @@ export default function Canvas({ status = false }) {
   return (
     <section>
       <div className='canvas-editor'>
-
         <label className='brush-size-label'>
           <p>brush size 📶</p>
           <input type={"range"} id="size" name="size"
