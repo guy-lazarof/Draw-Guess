@@ -28,6 +28,7 @@ export function Welcome() {
       }
       else if (data === 'user2') {
         console.log('data:', data)
+
         navigate(`/guessing`)
       }
     });

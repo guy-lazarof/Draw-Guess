@@ -12,6 +12,8 @@ export function Guessing() {
   const points = useSelector(storeState => storeState.chooseWordModule.points)
   const score = useSelector(storeState => storeState.scoreModule.score)
   const [guessingWord, setGuessingWord] = useState('')
+  // const [isDrawSent, setIsDrawSent] = useState(null)
+  const [drawSent, setDrawSent] = useState(null)
   const navigate = useNavigate()
   const socketId = useSelector(storeState => storeState.socketIdModule.socketId)
 
@@ -19,7 +21,20 @@ export function Guessing() {
   useEffect(() => {
     socketService.emit('start-game', socketId)
     console.log('starting game')
+
+    socketService.on('get-word', (data) => {
+      getActionChooseWord(data.word, data.points)
+    });
+
+    socketService.on('load-draw', (data) => {
+      setDrawSent(data)
+      console.log('canvassssss:', data)
+    });
+
+
   }, [])
+
+
   // socketId
   function handleChange({ target }) {
     let { value, name: field, type } = target
@@ -30,9 +45,10 @@ export function Guessing() {
     ev.preventDefault()
     if (choosenWord.length !== 0 && guessingWord.guessing === choosenWord) {
       console.log(true);
-      navigate(`/word-choosing`)
+      // socketService.emit('guessing-success')
       getActionChooseWord('')
       getActionScore(points)
+      navigate(`/word-choosing`)
     }
     else {
       console.log(false);
@@ -42,7 +58,7 @@ export function Guessing() {
   return (
     <section className='guessing-view'>
       <p className='score-counter'>score:{score}</p>
-      <Canvas status={true} />
+      <Canvas status={false} drawSent={drawSent} />
       <form onSubmit={(event) => { onGuessing(event) }}
         className='guessing-form'>
         <label className='guessing-label'>

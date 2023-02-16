@@ -41,6 +41,20 @@ function setupSocketAPI(http) {
 
         })
 
+        socket.on('send-word', (data) => {
+            socket.broadcast.emit('get-word', data)
+        })
+
+
+        socket.on('send-draw', (data) => {
+            socket.broadcast.emit('load-draw', data)
+        })
+
+        // socket.on('guessing-success', () => {
+        //     socket.broadcast.emit('switch-turn')
+        // })
+
+
         socket.on('word-choosing', () => {
             console.log('starting game')
         })

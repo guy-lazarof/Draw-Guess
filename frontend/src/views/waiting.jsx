@@ -16,6 +16,12 @@ export function Waiting() {
         navigate(`/word-choosing`)
       }
     });
+
+    socketService.on('load-draw', () => {
+      navigate(`/guessing`)
+
+    });
+
   }, [])
   // socketId
   return (

@@ -1,17 +1,19 @@
 import { useEffect, useRef, useState } from 'react';
 import CanvasDraw from 'react-canvas-draw';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { socket } from '../services/socket.service';
+import { getActionDraw } from '../store/draw.action';
 import colorPicker from './../assets/img/color.jpg';
 import reset from './../assets/img/reset.png';
 import undo from './../assets/img/undo.jpg';
 
-export default function Canvas({ status = false }) {
+export default function Canvas({ status = false, drawSent }) {
   const [canvasSize, setCanvasSize] = useState([400, 350]);
   const [brushColor, setBrushColor] = useState('');
   const [brushSize, setBrushSize] = useState('');
   const canvasRef = useRef(null);
+  const draw = useSelector(storeState => storeState.drawModule.draw)
 
   function handleChangeCanvas() {
     const canvas = canvasRef.current;
@@ -19,17 +21,14 @@ export default function Canvas({ status = false }) {
     if (canvas) {
       canvasData = canvas.getSaveData();
     }
+    getActionDraw(canvasData)
+    console.log('draw:', canvasData)
   }
 
   useEffect(() => {
-    socket.on("drawing-from-server", (data) => {
-      if (!data.payload) return;
-      canvasRef.current.loadSaveData(data.payload);
-    });
-
-    return () => {
-      socket.off("drawing-from-server");
-    };
+    if (drawSent) {
+      canvasRef.current.loadSaveData(drawSent);
+    }
   });
 
   function handleChangeColor({ target }) {

@@ -37,6 +37,7 @@ export function WordChoosing() {
 
   function choosingWord(word, points) {
     getActionChooseWord(word, points)
+    socketService.emit('send-word', { word: word, points: points })
     navigate(`/drawing`)
   }
 
